@@ -14,7 +14,7 @@ npm run dev
 
 Everything editable is in [`src/data.js`](src/data.js): copy, prices, plans, FAQ, email, socials.
 
-**Photos.** Create `public/images/` and drop images in with these names. Until a file exists, a placeholder shows.
+**Photos.** Jaycelyn's photos live in `public/images/`. The current ones are cropped from her Pretty N Fit flyer (selfie) and her Instagram, @prettynfitcoaching (back photo). They're small originals, so swap in full-size files with the same names when she has them. If a file is missing, a placeholder shows.
 
 | File | Where it shows |
 | --- | --- |

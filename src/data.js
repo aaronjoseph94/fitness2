@@ -18,7 +18,7 @@ export const brand = {
   },
   // Empty url = link hidden.
   socials: [
-    { name: 'Instagram', url: '' },
+    { name: 'Instagram', url: 'https://www.instagram.com/prettynfitcoaching/' },
     { name: 'TikTok', url: '' },
     { name: 'Facebook', url: 'https://www.facebook.com/AFLacombe/' },
   ],
@@ -28,7 +28,7 @@ export const brand = {
 export const photos = {
   hero: { src: '/images/jaycelyn-hero.jpg', alt: 'Jaycelyn Zimmer, personal trainer and nutrition coach' },
   heroSmall: { src: '/images/jaycelyn-back.jpg', alt: 'Jaycelyn flexing her back' },
-  about: { src: '/images/jaycelyn-about.jpg', alt: 'Jaycelyn at Anytime Fitness Lacombe' },
+  about: { src: '/images/jaycelyn-about.jpg', alt: 'Jaycelyn Zimmer, coach at Pretty N Fit' },
 }
 
 // Nutrition photos (Unsplash License, free for commercial use). Credits in README.
