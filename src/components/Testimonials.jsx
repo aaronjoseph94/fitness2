@@ -5,22 +5,20 @@ import { testimonials } from '../data'
 export default function Testimonials() {
   if (!testimonials.length) return null
   return (
-    <section className="section light testimonials">
+    <section className="section testimonials">
       <div className="container">
-        <div className="section-head reveal">
+        <div className="section-head center reveal">
           <span className="eyebrow">Client stories</span>
-          <h2>Real people, <em>real</em> progress.</h2>
+          <h2>Real people, real progress</h2>
         </div>
-        <div className="quotes">
-          {testimonials.map(({ quote, name, detail, stars }, i) => (
+        <div className="grid grid--3">
+          {testimonials.map(({ quote, name, detail }, i) => (
             <blockquote className="quote reveal" data-delay={i + ''} key={name}>
-              {stars > 0 && (
-                <div className="quote__stars" aria-label={`${stars} stars`}>
-                  {Array.from({ length: stars }).map((_, j) => <Star key={j} />)}
-                </div>
-              )}
+              <div className="quote__stars" aria-label="5 stars">
+                {Array.from({ length: 5 }).map((_, j) => <Star key={j} />)}
+              </div>
               <p>"{quote}"</p>
-              <footer className="mono"><strong>{name}</strong>{detail ? ` · ${detail}` : ''}</footer>
+              <footer><strong>{name}</strong>{detail ? ` · ${detail}` : ''}</footer>
             </blockquote>
           ))}
         </div>

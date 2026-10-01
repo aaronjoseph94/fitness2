@@ -1,28 +1,26 @@
-import { audiences, images } from '../data'
-import { Img } from './Graphics'
+import { audiences } from '../data'
+import { Blob } from './Graphics'
 
 export default function Audiences() {
   return (
     <section className="section audiences" id="for-you">
+      <Blob style={{ width: 420, top: -120, right: -140 }} opacity={0.6} />
       <div className="container">
-        <div className="section-head reveal">
-          <span className="eyebrow">Who it's for</span>
-          <h2>Built for <em>every</em> body.</h2>
-          <p className="lead">Beginner or athlete. 18 or 65. If you want to get stronger, you're in.</p>
+        <div className="section-head center reveal">
+          <span className="eyebrow">Built for every body</span>
+          <h2>Beginner or athlete. 18 or 65.</h2>
+          <p className="lead">If you want to get stronger, you're in.</p>
         </div>
-        <div className="audiences__grid">
-          <div className="audiences__visual reveal">
-            <Img src={images.strength.src} alt={images.strength.alt} ratio="4 / 5" position="center 40%" className="img--sticky" />
-          </div>
-          <ol className="roster">
-            {audiences.map(({ title, text }, i) => (
-              <li key={title} className="reveal" data-delay={(i % 2) + ''}>
-                <span className="mono">0{i + 1}</span>
-                <h3>{title}</h3>
-                <p>{text}</p>
-              </li>
-            ))}
-          </ol>
+        <div className="grid grid--4">
+          {audiences.map(({ icon: Icon, title, text }, i) => (
+            <div className="tile reveal" data-delay={(i % 4) + ''} key={title}>
+              <div className="icon-chip"><Icon /></div>
+              <div>
+                <strong>{title}</strong>
+                <span>{text}</span>
+              </div>
+            </div>
+          ))}
         </div>
       </div>
     </section>

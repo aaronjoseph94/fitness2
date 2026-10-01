@@ -1,11 +1,11 @@
 import { useState } from 'react'
 import { Mail, MapPin, Send } from 'lucide-react'
-import { brand, inquiryOptions, terms, images } from '../data'
-import { SocialIcon } from './Graphics'
+import { brand, inquiryOptions, terms } from '../data'
+import { Blob, Sparkle, SocialIcon } from './Graphics'
 
 const formats = ['Online', 'In person', 'Either']
 
-export default function Contact({ inquiry, setInquiry }) {
+export default function Contact({ inquiry, setInquiry, term, setTerm }) {
   const [sent, setSent] = useState(false)
 
   // No backend: compose the email in the visitor's mail app.
@@ -34,19 +34,19 @@ export default function Contact({ inquiry, setInquiry }) {
 
   return (
     <section className="section contact" id="contact">
-      <img className="contact__bg" src={images.cta.src} alt="" aria-hidden="true" loading="lazy" decoding="async" />
-      <div className="contact__shade" aria-hidden="true" />
-      <div className="container contact__grid">
-        <div className="reveal">
-          <span className="eyebrow">Let's talk</span>
-          <h2>Your first session is <em>free.</em></h2>
+      <Blob style={{ width: 560, top: -200, right: -200 }} color="#fff" opacity={0.08} />
+      <Sparkle style={{ top: '14%', left: '48%' }} size={18} />
+      <div className="container">
+        <div className="on-dark reveal">
+          <span className="script contact__script">Let's go</span>
+          <h2>Your first session is free.</h2>
           <p className="lead">
             Tell {brand.firstName} where you're at. She'll reply to book your free Strategy Session, in person at{' '}
             {brand.gym.name} or online.
           </p>
           <ul className="contact__info">
-            <li><Mail strokeWidth={1.5} /><a href={`mailto:${brand.email}`}>{brand.email}</a></li>
-            <li><MapPin strokeWidth={1.5} /><a href={brand.gym.mapUrl} target="_blank" rel="noreferrer">{brand.gym.name}<br />{brand.gym.address}</a></li>
+            <li><Mail /><a href={`mailto:${brand.email}`}>{brand.email}</a></li>
+            <li><MapPin /><a href={brand.gym.mapUrl} target="_blank" rel="noreferrer">{brand.gym.name} · {brand.gym.address}</a></li>
           </ul>
           {socials.length > 0 && (
             <div className="socials">
@@ -86,27 +86,27 @@ export default function Contact({ inquiry, setInquiry }) {
           <div className="form__row">
             <div className="field">
               <label htmlFor="term">Commitment</label>
-              <select id="term" name="term" defaultValue="monthly">
+              <select id="term" name="term" value={term} onChange={(e) => setTerm(e.target.value)}>
                 {terms.map((x) => <option key={x.id} value={x.id}>{x.label}</option>)}
               </select>
             </div>
             <div className="field">
               <span className="field__label">Train</span>
-              <div className="chips" role="radiogroup" aria-label="Training format">
-                {formats.map((f, i) => (
-                  <label className="chip" key={f}>
-                    <input type="radio" name="format" value={f} defaultChecked={i === 2} />
-                    <span>{f}</span>
-                  </label>
-                ))}
-              </div>
+            <div className="chips" role="radiogroup" aria-label="Training format">
+              {formats.map((f, i) => (
+                <label className="chip" key={f}>
+                  <input type="radio" name="format" value={f} defaultChecked={i === 2} />
+                  <span>{f}</span>
+                </label>
+              ))}
+            </div>
             </div>
           </div>
           <div className="field">
             <label htmlFor="goals">Your goal</label>
             <textarea id="goals" name="goals" required placeholder="Where are you now, and where do you want to be?" />
           </div>
-          <button className="btn btn--brass btn--block" type="submit">
+          <button className="btn btn--rose btn--block" type="submit">
             Send to {brand.firstName} <Send />
           </button>
           {sent && (

@@ -2,13 +2,9 @@ import { useEffect, useState } from 'react'
 import { ArrowRight } from 'lucide-react'
 import Nav from './components/Nav'
 import Hero from './components/Hero'
-import Narrative from './components/Narrative'
 import Audiences from './components/Audiences'
-import Gallery from './components/Gallery'
-import Benefits from './components/Benefits'
-import Nutrition from './components/Nutrition'
 import About from './components/About'
-import Transformation from './components/Transformation'
+import Benefits from './components/Benefits'
 import Plans from './components/Plans'
 import HowItWorks from './components/HowItWorks'
 import Testimonials from './components/Testimonials'
@@ -18,23 +14,19 @@ import Footer from './components/Footer'
 
 export default function App() {
   const [inquiry, setInquiry] = useState('strategy')
-  const [hideCta, setHideCta] = useState(false)
+  const [term, setTerm] = useState('monthly')
+  const [atContact, setAtContact] = useState(false)
 
   // Pick a plan anywhere on the page → pre-select it in the form and scroll there.
   const choose = (id) => {
     setInquiry(id)
-    document.getElementById('contact')?.scrollIntoView() // smoothness comes from CSS, so reduced-motion is respected
+    document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })
   }
 
-  // Hide the sticky mobile button while the hero's own buttons or the contact form are on screen.
+  // Hide the sticky mobile button while the contact form is on screen.
   useEffect(() => {
-    const targets = [document.querySelector('.hero__actions'), document.getElementById('contact')].filter(Boolean)
-    const visible = new Map()
-    const io = new IntersectionObserver((entries) => {
-      entries.forEach((e) => visible.set(e.target, e.isIntersecting))
-      setHideCta([...visible.values()].some(Boolean))
-    }, { threshold: 0.2 })
-    targets.forEach((t) => io.observe(t))
+    const io = new IntersectionObserver(([e]) => setAtContact(e.isIntersecting), { threshold: 0.2 })
+    io.observe(document.getElementById('contact'))
     return () => io.disconnect()
   }, [])
 
@@ -58,23 +50,19 @@ export default function App() {
       <Nav />
       <main>
         <Hero onChoose={choose} />
-        <Narrative />
         <Audiences />
-        <Gallery onChoose={choose} />
-        <Benefits />
-        <Nutrition onChoose={choose} />
         <About onChoose={choose} />
-        <Transformation onChoose={choose} />
+        <Benefits />
         <Plans onChoose={choose} />
         <HowItWorks onChoose={choose} />
         <Testimonials />
-        <FAQ onChoose={choose} />
-        <Contact inquiry={inquiry} setInquiry={setInquiry} />
+        <FAQ />
+        <Contact inquiry={inquiry} setInquiry={setInquiry} term={term} setTerm={setTerm} />
       </main>
       <Footer />
-      <div className={`mobile-cta ${hideCta ? 'hidden' : ''}`}>
-        <button className="btn btn--brass btn--block" onClick={() => choose('strategy')}>
-          Book your free session <ArrowRight />
+      <div className={`mobile-cta ${atContact ? 'hidden' : ''}`}>
+        <button className="btn btn--ink btn--block" onClick={() => choose('strategy')}>
+          Claim your free session <ArrowRight />
         </button>
       </div>
     </>

@@ -1,18 +1,74 @@
 import { useState } from 'react'
 
-// Jaycelyn's photo slots: show a quiet placeholder until the real file exists in /public/images.
-export function Photo({ src, alt, className = '' }) {
+// Soft organic shape used as background decoration.
+export function Blob({ className = '', style, color = 'var(--blush)', opacity = 0.5, flip = false }) {
+  return (
+    <svg
+      className={`blob ${className}`}
+      style={{ ...style, transform: flip ? 'scaleX(-1)' : undefined }}
+      viewBox="0 0 200 200"
+      aria-hidden="true"
+    >
+      <path
+        fill={color}
+        opacity={opacity}
+        d="M45.3,-58.9C58.9,-50.5,70.4,-37.1,75.6,-21.4C80.8,-5.7,79.6,12.3,72.1,27C64.6,41.7,50.8,53.1,35.7,61.3C20.6,69.5,4.3,74.5,-12.7,73.6C-29.7,72.7,-47.4,65.9,-58.9,53.2C-70.4,40.5,-75.7,21.9,-75.4,3.6C-75.1,-14.7,-69.2,-32.7,-57.6,-42.7C-46,-52.7,-28.7,-54.7,-12.6,-58.6C3.5,-62.5,31.7,-67.3,45.3,-58.9Z"
+        transform="translate(100 100)"
+      />
+    </svg>
+  )
+}
+
+export function Sparkle({ className = '', style, size = 24 }) {
+  return (
+    <svg className={`sparkle ${className}`} style={style} width={size} height={size} viewBox="0 0 24 24" aria-hidden="true">
+      <path fill="currentColor" d="M12 0c.6 7 5 11.4 12 12-7 .6-11.4 5-12 12-.6-7-5-11.4-12-12 7-.6 11.4-5 12-12z" />
+    </svg>
+  )
+}
+
+export function HeartMark({ className = '', style, size = 20 }) {
+  return (
+    <svg className={className} style={style} width={size} height={size} viewBox="0 0 24 24" aria-hidden="true">
+      <path fill="currentColor" d="M12 21s-7.5-4.6-10-9.5C.3 8 2.3 4 6.2 4c2.2 0 3.9 1.3 4.8 2.7C12 5.3 13.6 4 15.8 4c3.9 0 5.9 4 4.2 7.5C19.5 16.4 12 21 12 21z" />
+    </svg>
+  )
+}
+
+// Wave divider between sections.
+export function Wave({ color = 'var(--cream)', flip = false, className = '' }) {
+  return (
+    <svg
+      className={`wave ${className}`}
+      style={{ transform: flip ? 'scaleY(-1)' : undefined }}
+      viewBox="0 0 1440 80"
+      preserveAspectRatio="none"
+      aria-hidden="true"
+    >
+      <path fill={color} d="M0,40 C240,80 480,0 720,40 C960,80 1200,0 1440,40 L1440,80 L0,80 Z" />
+    </svg>
+  )
+}
+
+// Photo with graceful fallback until real images are dropped in /public/images.
+export function Photo({ src, alt, shape = 'arch', className = '' }) {
   const [failed, setFailed] = useState(false)
   return (
-    <div className={`photo ${className}`}>
+    <div className={`photo photo--${shape} ${className}`}>
       {src && !failed ? (
-        <img src={src} alt={alt} loading="lazy" decoding="async" onError={() => setFailed(true)} />
+        <img src={src} alt={alt} loading="lazy" onError={() => setFailed(true)} />
       ) : (
         <div className="photo__placeholder" role="img" aria-label={alt}>
           <svg viewBox="0 0 120 160" aria-hidden="true">
-            <rect width="120" height="160" fill="#1c1c1f" />
-            <circle cx="60" cy="58" r="24" fill="#2b2b30" />
-            <path d="M18 150c4-32 22-46 42-46s38 14 42 46z" fill="#2b2b30" />
+            <defs>
+              <linearGradient id="ph" x1="0" x2="1" y1="0" y2="1">
+                <stop offset="0" stopColor="#fbe6e6" />
+                <stop offset="1" stopColor="#f0b9bd" />
+              </linearGradient>
+            </defs>
+            <rect width="120" height="160" fill="url(#ph)" />
+            <circle cx="60" cy="58" r="24" fill="#d4767d" opacity=".55" />
+            <path d="M18 150c4-32 22-46 42-46s38 14 42 46z" fill="#d4767d" opacity=".55" />
           </svg>
           <span>Photo coming soon</span>
         </div>
@@ -21,23 +77,8 @@ export function Photo({ src, alt, className = '' }) {
   )
 }
 
-// Stock photo with the site's grade applied. `ratio` is a CSS aspect-ratio value.
-export function Img({ src, alt, ratio = '4 / 5', position = 'center', className = '', eager = false }) {
-  return (
-    <div className={`img ${className}`} style={{ aspectRatio: ratio }}>
-      <img
-        src={src}
-        alt={alt}
-        loading={eager ? 'eager' : 'lazy'}
-        decoding="async"
-        style={{ objectPosition: position }}
-      />
-    </div>
-  )
-}
-
 // Social brand marks (lucide dropped brand icons).
-export function SocialIcon({ name, size = 18 }) {
+export function SocialIcon({ name, size = 20 }) {
   const common = { width: size, height: size, viewBox: '0 0 24 24', fill: 'currentColor', 'aria-hidden': true }
   switch (name) {
     case 'Instagram':

@@ -2,7 +2,7 @@
 import {
   Sparkles, Dumbbell, Flame, Briefcase, Sunrise, Target, Trophy, Repeat,
   ClipboardList, Video, Calendar, MessageCircle, TrendingUp, MapPin,
-  GraduationCap, Apple, Award, Heart, ShieldCheck, Utensils, ShoppingBasket, Scale,
+  GraduationCap, Apple, Award, Heart, ShieldCheck,
 } from 'lucide-react'
 
 export const brand = {
@@ -24,37 +24,11 @@ export const brand = {
   ],
 }
 
-// Jaycelyn's own photos. Drop them into /public/images with these names; a neutral placeholder shows until then.
+// Drop photos into /public/images with these names. Missing files show a placeholder.
 export const photos = {
-  about: { src: '/images/jaycelyn-about.jpg', alt: 'Jaycelyn Zimmer, personal trainer and nutrition coach' },
-}
-
-// A real client's before/after, shared with their written permission. Drop before.jpg and after.jpg
-// into /public/images (same framing, same lighting if possible). Placeholders show until both exist.
-export const transformation = {
-  before: '/images/before.jpg',
-  after: '/images/after.jpg',
-  caption: '', // e.g. 'Complete Coaching, 6 months · shared with permission'
-}
-
-// Stock photography (Unsplash License, free for commercial use). Credits in README.
-export const images = {
-  hero: { src: '/images/hero.jpg', alt: 'Athlete setting up a barbell back squat in a dark gym' },
-  narrative: { src: '/images/narrative.jpg', alt: 'Lifter holding a kettlebell in a dim gym' },
-  strength: { src: '/images/strength.jpg', alt: 'Lifter setting up a heavy deadlift on a chalk-marked floor' },
-  coach: { src: '/images/coach.jpg', alt: 'Trainer coaching a client through push-ups' },
-  nutrition: { src: '/images/nutrition.jpg', alt: 'Hands chopping fresh herbs on a cutting board' },
-  grip: { src: '/images/grip.jpg', alt: 'Hand gripping a barbell' },
-  cta: { src: '/images/cta.jpg', alt: 'Chalk dust bursting from a clapped hand' },
-  gym1: { src: '/images/gym-1.jpg', alt: 'Woman with a barbell across her shoulders in a dark gym' },
-  gym2: { src: '/images/gym-2.jpg', alt: 'Woman pressing a barbell overhead in a squat rack' },
-  gym3: { src: '/images/gym-3.jpg', alt: 'Man setting up a heavy deadlift' },
-  gym4: { src: '/images/gym-4.jpg', alt: 'Woman back squatting in a power rack' },
-  gym5: { src: '/images/gym-5.jpg', alt: 'Man holding a loaded barbell at the top of a deadlift' },
-  gym6: { src: '/images/gym-6.jpg', alt: 'A man and a woman pressing kettlebells overhead together' },
-  foodFlatlay: { src: '/images/food-flatlay.jpg', alt: 'Avocado, eggs, tomatoes and greens on a cutting board' },
-  foodPrep: { src: '/images/food-prep.jpg', alt: 'Glass meal-prep containers filled with rice, vegetables and salad' },
-  foodBasket: { src: '/images/food-basket.jpg', alt: 'A basket of fresh vegetables' },
+  hero: { src: '/images/jaycelyn-hero.jpg', alt: 'Jaycelyn Zimmer, personal trainer and nutrition coach' },
+  heroSmall: { src: '/images/jaycelyn-back.jpg', alt: 'Jaycelyn flexing her back' },
+  about: { src: '/images/jaycelyn-about.jpg', alt: 'Jaycelyn at Anytime Fitness Lacombe' },
 }
 
 export const credentials = [
@@ -64,45 +38,15 @@ export const credentials = [
   { icon: MapPin, text: 'Manager, Anytime Fitness Lacombe' },
 ]
 
-export const reasons = [
-  { title: 'Written for you', text: 'Your goals, your schedule, your equipment. No templates, no guesswork.' },
-  { title: 'Checked every week', text: 'Form videos reviewed. Numbers adjusted. Questions answered before they become excuses.' },
-  { title: 'Built to outlast the program', text: 'You finish with habits you keep, not a rebound.' },
-]
-
 export const audiences = [
   { icon: Sparkles, title: 'New to the gym', text: 'Learn the basics properly. Zero judgment.' },
   { icon: Dumbbell, title: 'Women who lift', text: 'Build strength and shape with confidence.' },
   { icon: Flame, title: 'Men building muscle', text: 'Progressive programming that adds size.' },
-  { icon: Briefcase, title: 'Busy parents & professionals', text: 'Efficient sessions that fit real life.' },
+  { icon: Briefcase, title: 'Busy parents & pros', text: 'Efficient sessions that fit real life.' },
   { icon: Sunrise, title: '40+ and active', text: 'Strength and mobility for the long run.' },
   { icon: Target, title: 'Fat loss', text: 'Sustainable nutrition. Keep the muscle.' },
   { icon: Trophy, title: 'Athletes', text: 'Conditioning for your sport or first show.' },
   { icon: Repeat, title: 'Coming back', text: 'After a break or injury, at your pace.' },
-]
-
-export const gallery = [
-  { image: 'gym1', caption: 'Squat day' },
-  { image: 'gym3', caption: 'Deadlift, set one' },
-  { image: 'gym2', caption: 'Overhead strength' },
-  { image: 'gym5', caption: 'Lockout' },
-]
-
-// Nutrition coaching, the way it actually runs: intake → targets → real food → weekly adjustment.
-export const nutritionSteps = [
-  { image: 'foodFlatlay', title: 'Start where you are', text: 'Three normal days of eating. No cleanse, no judgment.' },
-  { image: 'foodPrep', title: 'Get your numbers', text: 'Calories and protein set for your goal, your body, your week.' },
-  { image: 'foodBasket', title: 'Eat food you like', text: 'Simple meal frameworks, a grocery list, a playbook for eating out.' },
-  { image: 'nutrition', title: 'Adjust weekly', text: 'Photos, measurements, energy and hunger tell us what to change.' },
-]
-
-export const nutritionIncluded = [
-  { icon: Scale, text: 'Personal macro + calorie targets' },
-  { icon: Utensils, text: 'Meal frameworks + recipes' },
-  { icon: ShoppingBasket, text: 'Grocery list + eating-out playbook' },
-  { icon: Calendar, text: 'Weekly check-ins' },
-  { icon: Heart, text: 'Habit coaching' },
-  { icon: MessageCircle, text: 'Message support' },
 ]
 
 // checkoutUrl: paste a Stripe Payment Link to send people straight to checkout.
@@ -142,12 +86,13 @@ export const plans = [
   },
 ]
 
-// Commitment options offered. Used in the inquiry form and FAQ copy.
+// Commitment options. `save` is the discount off the monthly rate (0.1 = 10% off).
+// Set each to the real number once Jaycelyn confirms; 0 hides the savings badge.
 export const terms = [
-  { id: 'monthly', label: 'Month to month' },
-  { id: '3mo', label: '3 months' },
-  { id: '6mo', label: '6 months' },
-  { id: '12mo', label: '12 months' },
+  { id: 'monthly', label: 'Month to month', months: 1, save: 0 },
+  { id: '3mo', label: '3 months', months: 3, save: 0 },
+  { id: '6mo', label: '6 months', months: 6, save: 0 },
+  { id: '12mo', label: '12 months', months: 12, save: 0 },
 ]
 
 export const included = [
@@ -180,22 +125,21 @@ export const inquiryOptions = [
 ]
 
 export const steps = [
-  { title: 'Book your free Strategy Session', text: 'A relaxed conversation about your goal, your schedule and your starting point. In person or online.' },
+  { title: 'Book your free session', text: 'We map your goal, your schedule and your starting point. In person or online.' },
   { title: 'Get your plan', text: 'Training, nutrition or both. Built for you, not copied from a template.' },
   { title: 'Check in weekly', text: 'Adjust, progress, repeat. Consistency does the rest.' },
 ]
 
 // Add real client words here. Section stays hidden while this is empty.
-// Example: { quote: 'I finally feel strong.', name: 'Sarah M.', detail: 'Complete Coaching, 6 months', stars: 5 }
+// Example: { quote: 'I finally feel strong.', name: 'Sarah M.', detail: 'Complete Coaching, 6 months' }
 export const testimonials = []
 
 export const faqs = [
   { q: 'I have never trained before. Is this for me?', a: 'Yes. Most clients start at zero. You will learn the basics properly, at your pace, with no judgment.' },
-  { q: 'What happens at the free Strategy Session?', a: 'A relaxed conversation about your goals, your schedule and your history, in person or online. You leave with a clear next step whether or not you sign up.' },
+  { q: "What happens at the free Strategy Session?", a: 'A relaxed conversation about your goals, your schedule and your history, in person or online. You leave with a clear next step whether or not you sign up.' },
   { q: "I'm out of shape. Is it too late to start?", a: 'No. Starting where you are is the whole point. Your plan begins at your level and builds from there.' },
   { q: 'How many days a week do I need to train?', a: 'Most clients start with two or three sessions a week. Your plan is built around the time you actually have.' },
   { q: 'How does online coaching work?', a: 'Custom plan and macro targets, weekly check-ins, form videos reviewed by Jaycelyn, and messaging in between.' },
-  { q: 'Do I have to track macros?', a: 'No. If tracking is not for you, nutrition coaching runs habit by habit instead: one or two changes at a time that stick.' },
   { q: 'Do I need equipment for online coaching?', a: 'No. Plans work with a full gym, a few dumbbells, or just your bodyweight. Tell Jaycelyn what you have.' },
   { q: 'What should I bring to my first in-person session?', a: 'Comfortable clothes, runners and water. That is it.' },
   { q: 'How fast will I see results?', a: 'Strength and energy usually come first, within the first few weeks. Visible change builds over months of consistency, which is exactly what the weekly check-ins are for.' },

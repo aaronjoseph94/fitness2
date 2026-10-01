@@ -1,31 +1,27 @@
-import { benefits, images } from '../data'
-import { Img } from './Graphics'
+import { benefits } from '../data'
+import { Blob, Sparkle } from './Graphics'
 
 export default function Benefits() {
-  // A gym photo sits in the grid after the third benefit for rhythm.
-  const cells = [...benefits.slice(0, 3), 'image', ...benefits.slice(3)]
   return (
-    <section className="section light benefits" id="benefits">
+    <section className="section benefits" id="benefits">
+      <Blob style={{ width: 440, top: -140, left: -160 }} opacity={0.5} />
+      <Sparkle style={{ top: '14%', right: '8%' }} size={20} />
       <div className="container">
-        <div className="section-head reveal">
-          <span className="eyebrow">What changes</span>
-          <h2>Everything a downloaded program <em>can't</em> give you.</h2>
+        <div className="section-head center reveal">
+          <span className="eyebrow">Why it works</span>
+          <h2>More than a workout plan.</h2>
+          <p className="lead">Everything a downloaded program can't give you.</p>
         </div>
-        <div className="benefits__grid">
-          {cells.map((c, i) =>
-            c === 'image' ? (
-              <figure className="benefit benefit--image reveal" key="image">
-                <Img src={images.gym4.src} alt={images.gym4.alt} ratio="1 / 1" position="center 30%" />
-                <figcaption className="caption mono">Form first. Then load.</figcaption>
-              </figure>
-            ) : (
-              <div className="benefit reveal" data-delay={(i % 3) + ''} key={c.title}>
-                <c.icon strokeWidth={1.5} />
-                <h3>{c.title}</h3>
-                <p>{c.text}</p>
+        <div className="grid grid--4">
+          {benefits.map(({ icon: Icon, title, text }, i) => (
+            <div className="tile tile--soft reveal" data-delay={(i % 4) + ''} key={title}>
+              <div className="icon-chip"><Icon /></div>
+              <div>
+                <strong>{title}</strong>
+                <span>{text}</span>
               </div>
-            ),
-          )}
+            </div>
+          ))}
         </div>
       </div>
     </section>
