@@ -1,0 +1,7 @@
+# Netlify reads this on deploy. Vite 8 needs Node 20.19+ or 22.12+, so pin it.
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "22"
