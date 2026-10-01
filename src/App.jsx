@@ -5,6 +5,7 @@ import Hero from './components/Hero'
 import Audiences from './components/Audiences'
 import About from './components/About'
 import Benefits from './components/Benefits'
+import Nutrition from './components/Nutrition'
 import Plans from './components/Plans'
 import HowItWorks from './components/HowItWorks'
 import Testimonials from './components/Testimonials'
@@ -53,6 +54,7 @@ export default function App() {
         <Audiences />
         <About onChoose={choose} />
         <Benefits />
+        <Nutrition onChoose={choose} />
         <Plans onChoose={choose} />
         <HowItWorks onChoose={choose} />
         <Testimonials />

@@ -243,6 +243,30 @@ p { margin: 0; }
   .about__card { right: 8px; }
 }
 
+/* ───────────────────────── Nutrition ───────────────────────── */
+.nutrition { background: var(--blush-2); }
+.ncards { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+.ncard { position: relative; aspect-ratio: 3 / 4; border-radius: var(--radius); overflow: hidden; background: var(--blush); box-shadow: var(--shadow-sm); }
+.ncard img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform 1.2s ease; }
+.ncard:hover img { transform: scale(1.04); }
+.ncard::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(34, 27, 29, 0) 35%, rgba(34, 27, 29, 0.88) 100%); }
+.ncard__body { position: absolute; left: 0; right: 0; bottom: 0; padding: 20px; z-index: 1; color: var(--white); }
+.ncard__num { display: block; font-family: var(--font-script); font-size: 2rem; line-height: 1; color: var(--blush); margin-bottom: 6px; }
+.ncard h3 { color: var(--white); font-size: 1.35rem; margin-bottom: 6px; }
+.ncard p { font-size: 0.88rem; line-height: 1.45; color: rgba(255, 255, 255, 0.85); }
+.nutrition__foot { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 18px; margin-top: 28px; padding: 22px 24px; background: var(--white); border-radius: var(--radius); box-shadow: var(--shadow-sm); }
+.nutrition__foot p { flex: 1; min-width: 240px; color: var(--ink-2); font-size: 0.95rem; }
+.nutrition__foot strong { color: var(--ink); }
+.nutrition__actions { display: flex; flex-wrap: wrap; gap: 10px; }
+.nutrition__actions .btn--ghost { color: var(--rose-deep); }
+@media (max-width: 1000px) { .ncards { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 560px) {
+  .ncards { grid-template-columns: 1fr; }
+  .ncard { aspect-ratio: 4 / 3; }
+  .nutrition__actions, .nutrition__actions .btn { width: 100%; }
+  .nutrition__actions .btn { white-space: normal; }
+}
+
 /* ───────────────────────── Plans ───────────────────────── */
 .plans { background: var(--cream); }
 .plans__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; align-items: stretch; }

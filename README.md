@@ -29,6 +29,17 @@ Everything editable is in [`src/data.js`](src/data.js): copy, prices, plans, FAQ
 
 **Testimonials.** Add real client quotes to `testimonials` in `data.js`. The section stays hidden while the list is empty.
 
+## Nutrition photos
+
+The nutrition section uses four Unsplash photos (Unsplash License, free for commercial use) in `public/images/`:
+
+| File | Photographer |
+| --- | --- |
+| `food-flatlay.jpg` | @kate5oh3 |
+| `food-prep.jpg` | @ellaolsson |
+| `food-basket.jpg` | @jankraus |
+| `nutrition.jpg` | @jasonjarr |
+
 ## Deploy
 
 **Cloudflare Pages:** Workers & Pages → Create → Pages → Connect to Git. Framework preset **Vite**, build command `npm run build`, output directory `dist`. Set the `NODE_VERSION` environment variable to `22`.

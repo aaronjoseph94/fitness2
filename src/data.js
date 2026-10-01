@@ -2,7 +2,7 @@
 import {
   Sparkles, Dumbbell, Flame, Briefcase, Sunrise, Target, Trophy, Repeat,
   ClipboardList, Video, Calendar, MessageCircle, TrendingUp, MapPin,
-  GraduationCap, Apple, Award, Heart, ShieldCheck,
+  GraduationCap, Apple, Award, Heart, ShieldCheck, Utensils, ShoppingBasket, Scale,
 } from 'lucide-react'
 
 export const brand = {
@@ -30,6 +30,31 @@ export const photos = {
   heroSmall: { src: '/images/jaycelyn-back.jpg', alt: 'Jaycelyn flexing her back' },
   about: { src: '/images/jaycelyn-about.jpg', alt: 'Jaycelyn at Anytime Fitness Lacombe' },
 }
+
+// Nutrition photos (Unsplash License, free for commercial use). Credits in README.
+export const foodImages = {
+  flatlay: { src: '/images/food-flatlay.jpg', alt: 'Avocado, eggs, tomatoes and greens on a cutting board' },
+  prep: { src: '/images/food-prep.jpg', alt: 'Glass meal-prep containers filled with rice, vegetables and salad' },
+  basket: { src: '/images/food-basket.jpg', alt: 'A basket of fresh vegetables' },
+  herbs: { src: '/images/nutrition.jpg', alt: 'Hands chopping fresh herbs on a cutting board' },
+}
+
+// Nutrition coaching, the way it actually runs: intake, targets, real food, weekly adjustment.
+export const nutritionSteps = [
+  { image: 'flatlay', title: 'Start where you are', text: 'Three normal days of eating. No cleanse, no judgment.' },
+  { image: 'prep', title: 'Get your numbers', text: 'Calories and protein set for your goal, your body, your week.' },
+  { image: 'basket', title: 'Eat food you like', text: 'Simple meal frameworks, a grocery list, a playbook for eating out.' },
+  { image: 'herbs', title: 'Adjust weekly', text: 'Photos, measurements, energy and hunger tell us what to change.' },
+]
+
+export const nutritionIncluded = [
+  { icon: Scale, text: 'Personal macro + calorie targets' },
+  { icon: Utensils, text: 'Meal frameworks + recipes' },
+  { icon: ShoppingBasket, text: 'Grocery list + eating-out playbook' },
+  { icon: Calendar, text: 'Weekly check-ins' },
+  { icon: Heart, text: 'Habit coaching' },
+  { icon: MessageCircle, text: 'Message support' },
+]
 
 export const credentials = [
   { icon: GraduationCap, text: 'ISSA Certified Personal Trainer' },
@@ -140,6 +165,7 @@ export const faqs = [
   { q: "I'm out of shape. Is it too late to start?", a: 'No. Starting where you are is the whole point. Your plan begins at your level and builds from there.' },
   { q: 'How many days a week do I need to train?', a: 'Most clients start with two or three sessions a week. Your plan is built around the time you actually have.' },
   { q: 'How does online coaching work?', a: 'Custom plan and macro targets, weekly check-ins, form videos reviewed by Jaycelyn, and messaging in between.' },
+  { q: 'Do I have to track macros?', a: 'No. If tracking is not for you, nutrition coaching runs habit by habit instead: one or two changes at a time that stick.' },
   { q: 'Do I need equipment for online coaching?', a: 'No. Plans work with a full gym, a few dumbbells, or just your bodyweight. Tell Jaycelyn what you have.' },
   { q: 'What should I bring to my first in-person session?', a: 'Comfortable clothes, runners and water. That is it.' },
   { q: 'How fast will I see results?', a: 'Strength and energy usually come first, within the first few weeks. Visible change builds over months of consistency, which is exactly what the weekly check-ins are for.' },

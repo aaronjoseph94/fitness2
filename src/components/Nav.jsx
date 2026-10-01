@@ -4,6 +4,7 @@ import { brand } from '../data'
 
 const links = [
   ['#plans', 'Plans'],
+  ['#nutrition', 'Nutrition'],
   ['#about', 'Meet Jaycelyn'],
   ['#how', 'How it works'],
   ['#faq', 'FAQ'],

@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useId, useState } from 'react'
 
 // Soft organic shape used as background decoration.
 export function Blob({ className = '', style, color = 'var(--blush)', opacity = 0.5, flip = false }) {
@@ -53,6 +53,7 @@ export function Wave({ color = 'var(--cream)', flip = false, className = '' }) {
 // Photo with graceful fallback until real images are dropped in /public/images.
 export function Photo({ src, alt, shape = 'arch', className = '' }) {
   const [failed, setFailed] = useState(false)
+  const gradId = useId()
   return (
     <div className={`photo photo--${shape} ${className}`}>
       {src && !failed ? (
@@ -61,12 +62,12 @@ export function Photo({ src, alt, shape = 'arch', className = '' }) {
         <div className="photo__placeholder" role="img" aria-label={alt}>
           <svg viewBox="0 0 120 160" aria-hidden="true">
             <defs>
-              <linearGradient id="ph" x1="0" x2="1" y1="0" y2="1">
+              <linearGradient id={gradId} x1="0" x2="1" y1="0" y2="1">
                 <stop offset="0" stopColor="#fbe6e6" />
                 <stop offset="1" stopColor="#f0b9bd" />
               </linearGradient>
             </defs>
-            <rect width="120" height="160" fill="url(#ph)" />
+            <rect width="120" height="160" fill={`url(#${gradId})`} />
             <circle cx="60" cy="58" r="24" fill="#d4767d" opacity=".55" />
             <path d="M18 150c4-32 22-46 42-46s38 14 42 46z" fill="#d4767d" opacity=".55" />
           </svg>
