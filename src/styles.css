@@ -377,7 +377,8 @@ p { margin: 0; }
   .contact .container { grid-template-columns: 1fr; gap: 36px; }
   .form { padding: 22px 18px; }
 }
-@media (max-width: 520px) { .form__row { grid-template-columns: 1fr; } 
+@media (max-width: 520px) { .form__row { grid-template-columns: 1fr; } }
+
 /* ───────────────────────── Footer ───────────────────────── */
 .footer { background: var(--ink); color: rgba(255, 255, 255, 0.7); padding: 40px 0 110px; font-size: 0.88rem; }
 .footer .container { display: grid; gap: 18px; justify-items: center; text-align: center; }
